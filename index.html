@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline Sentiment Analyzer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #00695c;
+        }
+
+        form {
+            background: white;
+            padding: 24px 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 420px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input[type="submit"] {
+            background-color: #26a69a;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            border: none;
+            
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00796b;
+        }
+
+        .results {
+            margin-top: 24px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            width: 420px;
+            text-align: left;
+        }
+
+        .results p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #004d40;
+        }
+    </style>
+</head>
+<body>
+    <h1>Headline Sentiment Analyzer</h1>
+    <form method="POST">
+        <input type="text" name="headline" placeholder="Enter a financial headline..." required>
+        <input type="submit" value="Analyze">
+    </form>
+
+    {% if original %}
+    <div class="results">
+        <p><span class="label">Original:</span> {{ original }}</p>
+        <p><span class="label">Paraphrased:</span> {{ paraphrased }}</p>
+        <p><span class="label">Sentiment:</span> {{ sentiment }} (Score: {{ score }})</p>
+    </div>
+    {% endif %}
+</body>
+</html>
